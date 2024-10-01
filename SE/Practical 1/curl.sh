@@ -1,0 +1,1 @@
+curl 'https://coepresult.vercel.app/api/data' --data-raw '{"semester":4,"yearOfStudy":"SY","mis":"612203036"}'

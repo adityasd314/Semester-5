@@ -1,0 +1,1 @@
+SELECT course_id, title FROM course WHERE course_id IN (SELECT course_id FROM section WHERE instructor_id = (SELECT ID FROM instructor WHERE name = 'Srinivasan'));
