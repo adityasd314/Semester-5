@@ -34,7 +34,7 @@ run_test "Result: 1" 5 - 4
 run_test "Result: 12" 3 \* 4
 
 # Division
-run_test "Result: 2.50" 5 / 2
+run_test "Result: 2.5" 5 / 2
 
 # Division by zero
 run_test "Error: Division by zero is not allowed." 5 / 0
