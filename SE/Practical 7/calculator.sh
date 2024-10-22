@@ -13,29 +13,29 @@ num1=$1
 operation=$2
 num2=$3
 
-# Ensure num1 and num2 are numbers
+# Ensure num1 and num2 are valid numbers (integer or floating-point)
 if ! [[ "$num1" =~ ^-?[0-9]+(\.[0-9]+)?$ && "$num2" =~ ^-?[0-9]+(\.[0-9]+)?$ ]]; then
     echo "Error: Inputs must be numbers."
     exit 1
 fi
 
-# Perform the arithmetic operation using case
+# Perform the arithmetic operation using case and awk for floating-point calculations
 case "$operation" in
     +)
-        result=$(echo "$num1 + $num2" | bc)
+        result=$(awk "BEGIN {print $num1 + $num2}")
         ;;
     -)
-        result=$(echo "$num1 - $num2" | bc)
+        result=$(awk "BEGIN {print $num1 - $num2}")
         ;;
     \*)
-        result=$(echo "$num1 * $num2" | bc)
+        result=$(awk "BEGIN {print $num1 * $num2}")
         ;;
     /)
         if [ "$num2" == "0" ]; then
             echo "Error: Division by zero is not allowed."
             exit 1
         fi
-        result=$(echo "scale=2; $num1 / $num2" | bc)
+        result=$(awk "BEGIN {print $num1 / $num2}")
         ;;
     *)
         echo "Error: Unsupported operation. Use +, -, *, or /."
@@ -45,4 +45,3 @@ esac
 
 # Display the result
 echo "Result: $result"
-
